@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Inter"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Cookie"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+        <link rel="stylesheet" href="../css/popup.css" />
+        <link href="../css/material-components.min.css" rel="stylesheet" />
+        <script src="../js/material-components.min.js"></script>
+    </head>
+    <body>
+        <div id="header">
+            <img id="logo" src="../img/icons/icon48.png" alt="Logo" />
+            <div id="title">Meet Manager</div>
+            <div id="meta">
+                <p>Developed By Tony Jiang and Adish Shah</p>
+                <p id="version">Version Beta 1.2.9</p>
+            </div>
+        </div>
+        <div id="content">
+            <div class="mdc-snackbar">
+                <div class="mdc-snackbar__surface">
+                    <div
+                        class="mdc-snackbar__label"
+                        role="status"
+                        aria-live="polite"
+                    >
+                        Success.
+                    </div>
+                    <div class="mdc-snackbar__actions">
+                        <button
+                            class="mdc-icon-button mdc-snackbar__dismiss material-icons"
+                            aria-label="Close"
+                        >
+                            close
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="reset-dialog" class="mdc-dialog">
+                <div class="mdc-dialog__container">
+                    <div
+                        class="mdc-dialog__surface"
+                        role="alertdialog"
+                        aria-modal="true"
+                        aria-labelledby="reset-dialog-title"
+                        aria-describedby="reset-dialog-content"
+                    >
+                        <h2 class="mdc-dialog__title" id="reset-dialog-title">
+                            Are you sure?
+                        </h2>
+                        <div
+                            class="mdc-dialog__content"
+                            id="reset-dialog-content"
+                        >
+                            <p>
+                                By default, the extension generates a
+                                spreadsheet for you the first time you export.
+                                That spreadsheet gets updated whenever you
+                                export afterwards.
+                            </p>
+                            <p>
+                                This option will generate a brand new
+                                spreadsheet, and all future exports will update
+                                the new spreadsheet. Choose this option if you
+                                want to use a new spreadsheet for a new
+                                quarter/semester/school year or if your current
+                                spreadsheet causes errors when you try to
+                                export.
+                            </p>
+                            <p>
+                                Be warned that you cannot export to your current
+                                spreadsheet after you decide to use a new one.
+                                Do you want to proceed?
+                            </p>
+                        </div>
+                        <div class="mdc-dialog__actions">
+                            <button
+                                type="button"
+                                class="mdc-button mdc-dialog__button"
+                                data-mdc-dialog-action="close"
+                            >
+                                <div class="mdc-button__ripple"></div>
+                                <span class="mdc-button__label">No</span>
+                            </button>
+                            <button
+                                type="button"
+                                id="confirm-reset"
+                                class="mdc-button mdc-dialog__button"
+                                data-mdc-dialog-action="accept"
+                            >
+                                <div class="mdc-button__ripple"></div>
+                                <span class="mdc-button__label">Yes</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdc-dialog__scrim"></div>
+            </div>
+            <div id="clear-dialog" class="mdc-dialog">
+                <div class="mdc-dialog__container">
+                    <div
+                        class="mdc-dialog__surface"
+                        role="alertdialog"
+                        aria-modal="true"
+                        aria-labelledby="clear-dialog-title"
+                        aria-describedby="clear-dialog-content"
+                    >
+                        <h2 class="mdc-dialog__title" id="clear-dialog-title">
+                            Are you sure?
+                        </h2>
+                        <div
+                            class="mdc-dialog__content"
+                            id="clear-dialog-content"
+                        >
+                            <p>
+                                This option will wipe your class lists and
+                                attendance data from Google Chrome's local
+                                storage.
+                            </p>
+                            <p>
+                                Choose this option if you consistently encounter
+                                errors when attempting to export. You will have
+                                to re-enter your classes.
+                            </p>
+                            <p>
+                                This option does not affect your spreadsheet. Do
+                                you want to proceed?
+                            </p>
+                        </div>
+                        <div class="mdc-dialog__actions">
+                            <button
+                                type="button"
+                                class="mdc-button mdc-dialog__button"
+                                data-mdc-dialog-action="close"
+                            >
+                                <div class="mdc-button__ripple"></div>
+                                <span class="mdc-button__label">No</span>
+                            </button>
+                            <button
+                                type="button"
+                                id="confirm-clear"
+                                class="mdc-button mdc-dialog__button"
+                                data-mdc-dialog-action="accept"
+                            >
+                                <div class="mdc-button__ripple"></div>
+                                <span class="mdc-button__label">Yes</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdc-dialog__scrim"></div>
+            </div>
+            <label class="power">
+                <input type="checkbox" id="myCheck">
+                <div>
+                    <svg viewBox="0 0 44 44">
+                        <path d="M22,6 C31,6 38,13 38,22 C38,31 31,38 22,38 C13,38 6,31 6,22 C6,13 13,6 22,6 L22,28" id="path"></path>
+                    </svg>
+                </div>
+            </label>        
+            <div id="auto-admit">
+                <div class="mdc-switch">
+                    <div class="mdc-switch__track"></div>
+                    <div class="mdc-switch__thumb-underlay">
+                        <div class="mdc-switch__thumb"></div>
+                        <input
+                            type="checkbox"
+                            id="autoadmit-switch"
+                            class="mdc-switch__native-control"
+                            role="switch"
+                            aria-checked="false"
+                        />
+                    </div>
+                </div>
+                <label
+                    id="autoadmit-switch-label"
+                    class="mdc-button switch-label"
+                    for="autoadmit-switch"
+                    >Auto admit</label
+                >
+            </div>
+            <div id="auto-kick">
+                <div class="mdc-switch">
+                    <div class="mdc-switch__track"></div>
+                    <div class="mdc-switch__thumb-underlay">
+                        <div class="mdc-switch__thumb"></div>
+                        <input
+                            type="checkbox"
+                            id="autokick-switch"
+                            class="mdc-switch__native-control"
+                            role="switch"
+                            aria-checked="false"
+                        />
+                    </div>
+                </div>
+                <label
+                    id="autokick-switch-label"
+                    class="mdc-button switch-label"
+                    for="kick-switch"
+                    >Auto kick</label
+                >
+            </div>
+            <hr class="divider" />
+            <div id="show-popup">
+                <div class="mdc-switch">
+                    <div class="mdc-switch__track"></div>
+                    <div class="mdc-switch__thumb-underlay">
+                        <div class="mdc-switch__thumb"></div>
+                        <input
+                            type="checkbox"
+                            id="popup-switch"
+                            class="mdc-switch__native-control"
+                            role="switch"
+                            aria-checked="false"
+                        />
+                    </div>
+                </div>
+                <label
+                    id="popup-switch-label"
+                    class="mdc-button switch-label"
+                    for="popup-switch"
+                    >Show Popup</label
+                >
+            </div>
+            <hr class="solid" />
+            <div id="expand-bkg">
+                <button id="expand" class="mdc-button">
+                    <div class="mdc-button__ripple"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feathersettings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                </button>
+            </div>
+            <div id="more-options" hidden>
+                <hr class="dashed" />
+                <div>
+                    <button id="refresh" class="mdc-button mdc-button--outlined">
+                        <div class="mdc-button__ripple"></div>
+                        <i
+                            class="material-icons mdc-button__icon"
+                            aria-hidden="true"
+                            >autorenew</i
+                        >
+                        <span class="mdc-button__label"
+                            >Refresh Access Token</span
+                        >
+                    </button>
+                </div>
+                <div>
+                    <button id="clear" class="mdc-button mdc-button--outlined">
+                        <div class="mdc-button__ripple"></div>
+                        <i
+                            class="material-icons mdc-button__icon"
+                            aria-hidden="true"
+                            >delete</i
+                        >
+                        <span class="mdc-button__label"
+                            >Clear Storage</span
+                        >
+                    </button>
+                </div>
+            </div>
+        </div>
+        <script src="../js/popup.js"></script>
+        <script src="../js/auto-admit.js"></script>
+    </body>
+</html>
