@@ -6,3 +6,7 @@
 #### Our extension is still a work in-progress, but what we have so far is uploaded onto this repository. 
 
 #### Thank you! 
+
+
+##### Credit also given to Tyler, Adit Bala, and Lautaro Tejerina for helping us start this project up. 
+##### Reference Link: https://github.com/tytot/attendance-for-google-meet#usage
